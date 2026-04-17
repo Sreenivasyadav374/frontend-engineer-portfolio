@@ -71,7 +71,7 @@ export default function Contact() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm text-neutral-400">
                 <span className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-neutral-500 text-xs mono">@</span>
-                <span>gollasr.dev@gmail.com</span>
+                <span>srinivaspa374@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-neutral-400">
                 <span className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-neutral-500 text-xs">📍</span>

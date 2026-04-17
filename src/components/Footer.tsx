@@ -20,7 +20,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Sreenivasyadav374"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors duration-200"
@@ -30,7 +30,7 @@ export default function Footer() {
             </a>
             <span className="w-px h-4 bg-white/10" />
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/srinivas-yadav-b6a30527a/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors duration-200"

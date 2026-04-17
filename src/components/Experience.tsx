@@ -106,10 +106,10 @@ export default function Experience() {
                   <span className="mono text-xs text-sky-400 bg-sky-400/8 border border-sky-400/15 px-2.5 py-1 rounded-full">
                     {item.tag}
                   </span>
-                  <ExternalLink
+                  {/* <ExternalLink
                     size={14}
                     className="text-neutral-700 group-hover:text-neutral-500 transition-colors mt-0.5"
-                  />
+                  /> */}
                 </div>
                 <h3 className="text-white font-medium mb-2">{item.title}</h3>
                 <p className="text-neutral-500 text-sm leading-relaxed">{item.body}</p>
