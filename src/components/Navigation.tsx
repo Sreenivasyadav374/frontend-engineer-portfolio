@@ -20,6 +20,19 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 🔥 Centralized scroll handler (fixes mobile issue completely)
+  const handleNavClick = (href) => {
+    setMenuOpen(false);
+
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -32,29 +45,41 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#hero" className="mono text-sm text-white font-medium tracking-tight">
+        
+        {/* Logo */}
+        <a
+          href="#hero"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('#hero');
+          }}
+          className="mono text-sm text-white font-medium tracking-tight"
+        >
           GSY<span className="text-sky-400">.</span>
         </a>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.label}
-              href={link.href}
+              onClick={() => handleNavClick(link.href)}
               className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
             >
               {link.label}
-            </a>
+            </button>
           ))}
         </nav>
 
-        <a
-          href="#contact"
+        {/* Desktop CTA */}
+        <button
+          onClick={() => handleNavClick('#contact')}
           className="hidden md:inline-flex items-center gap-2 text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-neutral-200 transition-colors duration-200"
         >
           Get in touch
-        </a>
+        </button>
 
+        {/* Mobile Toggle */}
         <button
           className="md:hidden text-neutral-400 hover:text-white transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -63,25 +88,25 @@ export default function Navigation() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-[#0d0d0d] border-b border-white/[0.06] overflow-hidden"
+            className="md:hidden bg-[#0d0d0d] border-b border-white/[0.06]"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm text-neutral-400 hover:text-white transition-colors"
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-left text-sm text-neutral-400 hover:text-white transition-colors"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
             </div>
           </motion.div>
